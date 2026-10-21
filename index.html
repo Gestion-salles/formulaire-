@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- Cette ligne dit au navigateur que la page est écrite en HTML5 -->
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Adapte la page à la taille de l'écran (ordinateur, tablette, téléphone) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des filières</title>
+    <!-- Relie la page au fichier de style -->
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- Bouton qui affiche ou cache le formulaire (id="ouvrir" : JavaScript s'en sert pour le retrouver) -->
+    <button type="button" id="ouvrir" class="btn">Ajouter une filière</button>
+
+    <!-- Formulaire caché par le CSS, affiché quand il a la classe "active".
+         - Il n'y a plus d'attribut "action" : c'est JavaScript qui enverra les données avec fetch.
+         - novalidate : on désactive les messages automatiques du navigateur,
+           car c'est notre JavaScript qui vérifie les champs et affiche ses propres messages -->
+    <form id="formulaire" class="carte" method="post" novalidate>
+        <h1>FILIÈRE</h1>
+
+        <!-- ===== Champ : le nom de la filière ===== -->
+        <div class="champ">
+            <label for="nom">Nom</label>
+            <!-- name="nom" : le nom de la donnée envoyée (très important) -->
+            <select id="nom" name="nom" required>
+                <option value="" disabled selected>Choisir une filière</option>
+                <option value="DA">DA</option>
+                <option value="SI">SI</option>
+                <option value="SRI">SRI</option>
+                <option value="II">II</option>
+                <option value="CCA">CCA</option>
+                <option value="CI">CI</option>
+                <option value="GM">GM</option>
+                <option value="GC">GC</option>
+                <option value="TPL">TPL</option>
+                <option value="Droit">Droit</option>
+            </select>
+            <!-- Emplacement du message d'erreur de ce champ : JavaScript y écrira le texte.
+                 id="erreur-nom" = "erreur-" + le name du champ -->
+            <p class="erreur" id="erreur-nom"></p>
+        </div>
+
+        <!-- ===== Champ : l'effectif (nombre d'étudiants) ===== -->
+        <div class="champ">
+            <label for="effectif">Effectif</label>
+            <input type="number" id="effectif" name="effectif" min="1" placeholder="Veuillez entrer un effectif" required>
+            <p class="erreur" id="erreur-effectif"></p>
+        </div>
+
+        <!-- ===== Champ : la catégorie ===== -->
+        <div class="champ">
+            <label for="categorie">Catégorie</label>
+            <select id="categorie" name="categorie" required>
+                <option value="" disabled selected>Choisir une catégorie</option>
+                <option value="informatique">Informatique</option>
+                <option value="non_informatique">Non informatique</option>
+            </select>
+            <p class="erreur" id="erreur-categorie"></p>
+        </div>
+
+        <!-- Bouton d'envoi : au clic, le formulaire déclenche l'événement "submit" que JavaScript intercepte -->
+        <button type="submit" class="btn btn-envoi">Enregistrer</button>
+
+        <!-- Message général (succès ou échec de l'enregistrement), écrit par JavaScript -->
+        <p id="message" class="message"></p>
+    </form>
+
+    <!-- Le JavaScript est chargé à la fin, quand le bouton et le formulaire existent déjà -->
+    <script src="index.js"></script>
+</body>
+
+</html>

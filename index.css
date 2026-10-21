@@ -1,0 +1,136 @@
+/* ==========================================================
+   FICHIER DE STYLE (CSS)
+   Une règle s'écrit :  sélecteur { propriété: valeur; }
+   ========================================================== */
+
+/* ===== Base ===== */
+body {
+    margin: 0;
+    min-height: 100vh;          /* au moins toute la hauteur de l'écran */
+    display: flex;              /* mise en page "flex" pour centrer facilement */
+    flex-direction: column;     /* éléments les uns sous les autres */
+    align-items: center;        /* centrés horizontalement */
+    justify-content: center;    /* centrés verticalement */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: 50px;
+    font-style: italic;
+    color: blue;
+}
+
+/* ===== Formulaire (carte) ===== */
+.carte {
+    display: none;              /* cachée au départ */
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 90%;
+    max-width: 450px;
+    min-height: 70vh;
+    margin: 5vh auto;
+    padding: 20px 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: -2px -2px 7px white,
+                -2px -2px 7px royalblue;
+}
+
+/* Quand le JavaScript ajoute la classe "active", la carte devient visible */
+.carte.active {
+    display: flex;
+}
+
+.champ {
+    display: grid;
+    margin-top: 10px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 90%;
+    height: 5vh;
+    min-height: 36px;
+    margin-top: 4px;
+    border: none;
+    box-shadow: -2px -2px 7px white,
+                -2px -2px 7px blue;
+}
+
+select {
+    background-color: white;
+    font-size: 15px;
+}
+
+input::placeholder {
+    color: gainsboro;
+    font-size: 15px;
+    font-style: italic;
+}
+
+input:hover,
+select:hover {
+    box-shadow: inset 0.5px 0.5px 0.5px 0.5px slateblue;
+}
+
+/* ===== Messages d'erreur et de résultat (nouveau) ===== */
+
+/* Message d'erreur sous un champ : il est vide tant qu'il n'y a pas d'erreur */
+.erreur {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: red;
+}
+
+/* Message général sous le bouton Enregistrer */
+.message {
+    margin: 15px 0 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Deux états du message, ajoutés par JavaScript */
+.message.succes {
+    color: green;
+}
+
+.message.echec {
+    color: red;
+}
+
+/* ===== Boutons ===== */
+.btn {
+    height: 4vh;
+    min-height: 36px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: white;
+    background-color: blue;
+    box-shadow: 2px 2px 2px 2px slateblue;
+}
+
+#ouvrir {
+    width: auto;
+    padding: 0 15px;
+    margin: 0;
+    font-size: 16px;
+}
+
+.btn-envoi {
+    align-self: center;
+    width: 50%;
+    margin-top: 20px;
+}
